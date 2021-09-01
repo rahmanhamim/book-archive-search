@@ -1,0 +1,8 @@
+body {
+ /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  url("../image/white-bg.svg"); */
+ background-color: rgb(236, 231, 229);
+}
+.shadow-text {
+ text-shadow: 0.5px 0.5px 1px black;
+}
