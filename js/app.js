@@ -30,41 +30,15 @@ const displayResults = (books) => {
  // loop & append child
  else {
   books.docs.forEach((book) => {
-   // check cover image available or not ---------------------
-   if (book.cover_i === undefined) {
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
-   <div class="card h-100">
-       <img src="./image/dummy-book.png" style="height: 450px" alt="..." />
-       <div class="card-body">
-        <h3 class="card-title">${book.title}</h3>
-        <h5>${
-         book.author_name ? book.author_name[0] : "Author Name Not Found"
-        }</h5>
-        <p class="card-text">
-         First Publish date: ${
-          book.publish_date ? book.publish_date[0] : "Not Found"
-         }
-        </p>
-        <p class="card-text">
-         Publisher: ${book.publisher ? book.publisher[0] : "Not Found"}
-        </p>
-       </div>
-      </div>
-  `;
-    resultContainer.appendChild(div);
-   }
+   // check image
+   const imageUrl = `<img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" style="height: 450px" alt="..." />`;
+   const imageDummy = `<img src="./image/dummy-book.png" class="card-img-top" style="height: 450px" alt="..." />`;
 
-   // if image is available ----------------------------
-   else {
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
+   const div = document.createElement("div");
+   div.classList.add("col");
+   div.innerHTML = `
    <div class="card h-100">
-       <img src="https://covers.openlibrary.org/b/id/${
-        book.cover_i
-       }-M.jpg" class="card-img-top" style="height: 450px" alt="..." />
+       ${book.cover_i ? imageUrl : imageDummy}
        <div class="card-body">
         <h3 class="card-title">${book.title}</h3>
         <h5>${
@@ -81,8 +55,7 @@ const displayResults = (books) => {
        </div>
       </div>
   `;
-    resultContainer.appendChild(div);
-   }
+   resultContainer.appendChild(div);
   });
  }
 
